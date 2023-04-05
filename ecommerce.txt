@@ -1,0 +1,8 @@
+npx express-generator --hbs
+
+npm install
+
+npm install nodemon
+npx  nodemon bin/www
+
+npm install express-handlebars
