@@ -4,9 +4,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var hbs = require('express-handlebars');
+var fileUpload = require('express-fileupload');
 var userRouter = require('./routes/user');
 var adminRouter = require('./routes/admin');
-var addproductRouter = require('./routes/admin/add-product');
+
 
 var app = express();
 
@@ -19,10 +20,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(fileUpload());
 
 app.use('/', userRouter);
 app.use('/admin', adminRouter);
-app.use('/add-product', addproductRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
