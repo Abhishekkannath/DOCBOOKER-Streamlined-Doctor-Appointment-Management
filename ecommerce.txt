@@ -7,4 +7,6 @@ npx  nodemon bin/www
 
 npm install express-handlebars
 
+npm install express-fileupload
+
 here using mongodb 4x instead of 2x(code in connection, admin changed)

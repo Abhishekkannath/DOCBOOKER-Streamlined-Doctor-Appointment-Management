@@ -47,19 +47,26 @@ router.get('/', function(req, res, next) {
     }
   ]
 
-  res.render('admin/view-products', {products, admin:true})
+  res.render('admin/view-doctors', {products, admin:true})
 });
 
-router.get('/add-product', function(req,res){
-   res.render('admin/add-product')
+router.get('/add-doctor', function(req,res){
+   res.render('admin/add-doctor')
 })
 
-router.post('/add-product', function(req,res){
-  console.log(req.body)
-  console.log(req.files.fileToUpload)
-  productHelper.addProduct(req.body,(result)=>{
-    res.render('admin/add-product')
-  })
+router.post('/add-doctor', function(req,res){
+  productHelper.addProduct(req.body, (insertedId) => {
+    let image = req.files.fileToUpload;
+    image.mv("./public/images/" + insertedId + ".jpg", (err, done) => {
+      if (!err) {
+        res.render("admin/add-doctor");
+      }
+      else{
+        console.log(err)
+      }
+    });
+  });
+
 })
 
 module.exports = router;
