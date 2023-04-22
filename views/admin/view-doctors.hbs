@@ -8,18 +8,18 @@
        <table class="table mt-5">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">image</th>
+      <th scope="col">Docter id</th>
       <th scope="col">Name</th>
+      <th scope="col">Pofile Picture</th>
       <th scope="col">Description</th>
     </tr>
   </thead>
   <tbody>
-  {{#each products}}
+  {{#each doctors}}
     <tr>
-      <th scope="row">1</th>
-      <td><img style="height:50px;width:50px;" src="{{this.image}}" alt=""></td>
+      <th scope="row">{{this._id}}</th>
       <td>{{this.name}}</td>
+      <td><img style="height:50px;width:50px;" src="/images/{{this._id}}.jpg" alt=""></td>
       <td>{{this.desc}}</td>
     </tr>
    {{/each}} 
